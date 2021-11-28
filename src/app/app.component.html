@@ -1,46 +1,42 @@
-<div>
-  <table id="table">
-      <colgroup>
-          <col class="name" />
-          <col class="account" />
-      </colgroup>
-      <tr>
-          <th onclick="sortTable(0)"><span class="glyphicon glyphicon-sort"></span>NAME</th>
-          <th onclick="sortTable(1)"><span class="glyphicon glyphicon-sort"></span>ACCOUNT</th>
-      </tr>
-  </table>
-</div>
-<script>
-  document.addEventListener( "DOMContentLoaded", get_json_data, false ); // get_json_data is the function name that will fire on page load
+<html>
+<head><script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+ <link rel='stylesheet' href='https://codepedia.info/wp-content/themes/themevicky/css/editor.css' type='text/css' />
+ </head>
+ <body  ng-app="myapp" ng-controller="tableController">
+   <table class="table table-stripe"  >
+            <thead><tr>
+                    <th>Name</th>
+                    <th>Account</th>
+                    <th> City </th>
+                    </tr></thead>
+            <tbody>
+                <tr ng-repeat="emp in employees">
+                    <td> {{ emp.Name }} </td>
+                    <td> {{emp.Account }} </td>
+                    <td>  {{emp.City }}</td>
+                </tr>
+            </tbody>
+        </table>
 
-  function get_json_data(){
-      var json_url = 'data.json';
-      print(json_url.toString());
+<script type="text/javascript">
 
-      xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange = function() { 
-          if (this.readyState == 4 && this.status == 200) {//when a good response is given do this
+    var app = angular.module("myapp", []);
+    app.controller("tableController", ['$scope', function ($scope) {
 
-              var data = JSON.parse(this.responseText); // convert the response to a json object
-              append_json(data);// pass the json object to the append_json function
-          }
-      }
-      //set the request destination and type
-      xmlhttp.open("POST", json_url, true);
-      //set required headers for the request
-      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      // send the request
-      xmlhttp.send(); // when the request completes it will execute the code in onreadystatechange section
-  }
+   $scope.employees = [
+				{ 'Name': 'Satinder Singh', 'Account': '3,249.92', 'City': 'Bombay' },
+				{ 'Name': 'Leslie Mac', 'Account': '3,338.80', 'City': 'Queensland' },
+				{ 'Name': 'Andrea ely ', 'Account': '2,015.14', 'City': 'Rio' },
+				{ 'Name': 'Amit Sarna', 'Account': '1,449.70', 'City': 'Navi Mumbai' },
+				{ 'Name': 'David Miller', 'Account': '1,168.84', 'City': 'Scouthe'}
+		     ].sort(function(a, b){
+                 return a.Account.localeCompare(b.Account);
+             });       
+    }]);
+    
 
-  //this function appends the json data to the table 'gable'
-  function append_json(data){
-      var table = document.getElementById('table');
-      data.forEach(function(object) {
-          var tr = document.createElement('tr');
-          tr.innerHTML = '<td>' + object.NAME + '</td>' +
-          '<td>' + object.ACCOUNT + '</td>';
-          table.appendChild(tr);
-      });
-  }
+
 </script>
+ </body>
+</html>
+                        
