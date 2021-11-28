@@ -1,0 +1,70 @@
+<div class="wrapper">
+  <div class="content">
+    <div class="tabs">
+      <nav class="tabs_items">
+        <a href="tab_01" class="tabs_item">Income</a>
+        <a href="tab_02" class="tabs_item">Outcome</a>
+        <a href="tab_03" class="tabs_item">Loans</a>
+        <a href="tab_04" class="tabs_item">Investments</a>
+      </nav>
+      <div class="tabs_body">
+        <div id="tab_01" class="tabs_block">
+          <table>
+            <thead>
+              <th>Name</th>
+              <th>Account</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <td>{{user.name}}</td>
+                <td>{{user.account}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="tab_02" class="tabs_block">
+          <table>
+            <thead>
+              <th>Name</th>
+              <th>Account</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <td>{{user.name}}</td>
+                <td>{{user.account}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="tab_03" class="tabs_block">
+          <table>
+            <thead>
+              <th>Name</th>
+              <th>Account</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <td>{{user.name}}</td>
+                <td>{{user.account}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="tab_04" class="tabs_block">
+          <table>
+            <thead>
+              <th>Name</th>
+              <th>Account</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <td>{{user.name}}</td>
+                <td>{{user.account}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
